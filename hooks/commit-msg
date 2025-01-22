@@ -1,0 +1,12 @@
+#!/bin/bash
+MESSAGE=$(cat $1) 
+COMMITFORMAT="^\[(.+)\] .+$"
+
+if ! [[ "$MESSAGE" =~ $COMMITFORMAT ]]; then
+  echo "Seu commit foi rejeitado porque a mensagem está fora do padrão" 
+  echo ""
+  echo "Por favor, utilize o seguinte formato:"
+  echo "[nova-funcionalidade] descrição do commit"
+  echo ""
+  exit 1
+fi
